@@ -57,6 +57,7 @@ zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 alias ls='ls --color'
 
 alias python="python3"
+alias sqlite="sqlite3"
 path+=('/opt/nvim/bin')
 
 export GOROOT=/usr/local/go-1.24.0
@@ -71,3 +72,13 @@ typeset -T LD_LIBRARY_PATH ld_library_path
 # Set up fzf key bindings and fuzzy completion
 source /usr/share/doc/fzf/examples/key-bindings.zsh
 # eval "$(fzf)"
+
+# pnpm
+export PNPM_HOME="/home/gaspar/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
+eval "tmux source ./.tmux.conf"
