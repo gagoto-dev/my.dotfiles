@@ -59,7 +59,8 @@ alias ls='ls --color'
 alias ggs='git status'
 alias gga='git add'
 alias ggc='git commit -m'
-alias ggp='git push'
+alias ggpull='git pull'
+alias ggpush='git push'
 
 alias python="python3"
 alias sqlite="sqlite3"
