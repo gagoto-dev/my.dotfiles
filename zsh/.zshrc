@@ -57,7 +57,7 @@ zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 alias ls='ls --color'
 
 alias ggs='git status'
-alias gga='git add .'
+alias gga='git add'
 alias ggc='git commit -m'
 alias ggp='git push'
 
