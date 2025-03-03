@@ -73,11 +73,12 @@ path+=($GOPATH/bin)
 export PATH=$PATH:/usr/local/go-1.24.0/bin
 alias go="/usr/local/go-1.24.0/bin/go"
 
+export PATH=$PATH:$HOME/bin
 typeset -T LD_LIBRARY_PATH ld_library_path
 
 # Set up fzf key bindings and fuzzy completion
-source /usr/share/doc/fzf/examples/key-bindings.zsh
-# eval "$(fzf)"
+# source /usr/share/doc/fzf/examples/key-bindings.zsh
+source <(fzf --zsh)
 
 # pnpm
 export PNPM_HOME="/home/gaspar/.local/share/pnpm"
@@ -86,6 +87,9 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 
 # Pomodoro
 # Requires https://github.com/caarlos0/timer to be installed. spd-say should ship with your distro
@@ -108,4 +112,4 @@ alias br="pomodoro 'break'"
 
 alias reload="source ~/.zshrc"
 
-eval "tmux source ./.tmux.conf"
+eval "tmux source ~/.tmux.conf"
