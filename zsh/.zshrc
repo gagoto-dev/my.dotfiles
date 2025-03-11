@@ -56,9 +56,11 @@ zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 
 alias ls='ls --color'
 
+# Github aliases
 alias ggs='git status'
 alias gga='git add'
 alias ggc='git commit -m'
+alias ggcd='git checkout'
 alias ggpull='git pull'
 alias ggpush='git push'
 
@@ -66,12 +68,12 @@ alias python="python3"
 alias sqlite="sqlite3"
 path+=('/opt/nvim/bin')
 
-export GOROOT=/usr/local/go-1.24.0
+export GOROOT=/usr/local/go-1.24.1
 export GOPATH=$HOME/go
 
 path+=($GOPATH/bin)
-export PATH=$PATH:/usr/local/go-1.24.0/bin
-alias go="/usr/local/go-1.24.0/bin/go"
+export PATH=$PATH:/usr/local/go-1.24.1/bin
+alias go="/usr/local/go-1.24.1/bin/go"
 
 export PATH=$PATH:$HOME/bin
 typeset -T LD_LIBRARY_PATH ld_library_path

@@ -13,11 +13,19 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:monospace 8
+# font pango:monospace 10
+font pango:JetBrainsMono Nerd Font 10
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 #font pango:DejaVu Sans Mono 8
+
+exec --no-startup-id feh --bg-scale ~/wallpapers
+exec_always --no-startup-id killall polybar
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+
+exec_always --no-startup-id killall redshift
+exec_always --no-startup-id redshift
 
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
@@ -35,13 +43,6 @@ bindsym $mod+Shift+x exec i3lock -c 24273A
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
-
-# Use pactl to adjust volume in PulseAudio.
-set $refresh_i3status killall -SIGUSR1 i3status
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -159,14 +160,8 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
-bar {
-        status_command i3status
-}
-
 # i3-dmenu-desktop only displays applications shipping a.desktop file
-bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+bindsym $mod+d exec --no-startup-id rofi -show run
 
 # default dmenu behavior (now called unsing Shift)
 bindsym $mod+Shift+d exec --no-startup-id dmenu_run
@@ -200,7 +195,15 @@ exec --no-startup-id ~/.config/i3/scripts/inverse-scroll.bash
 # Compton
 exec --no-startup-id compton 
 
-gaps inner 3
-gaps outer 3
-gaps bottom 3
-gaps top 3
+gaps inner 8
+gaps outer 8
+gaps bottom 8
+gaps top 2
+
+# Deshabilitar borde superior
+default_border pixel 2
+default_floating_border pixel 2
+for_window [class="^.*"] border pixel 2
+
+# Settings
+exec --no-startup-id /usr/lib/gsd-xsettings
