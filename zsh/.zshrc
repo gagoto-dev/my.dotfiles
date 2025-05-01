@@ -1,3 +1,4 @@
+USE_CONDA=0
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
@@ -55,6 +56,7 @@ zstyle ':completion:*' menu no
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 
 alias ls='ls --color'
+alias ll='ls -lA'
 
 # Github aliases
 alias ggs='git status'
@@ -113,5 +115,27 @@ alias wo="pomodoro 'work'"
 alias br="pomodoro 'break'"
 
 alias reload="source ~/.zshrc"
+alias nvimpull="~/pull_nvim.sh"
 
-eval "tmux source ~/.tmux.conf"
+# eval "tmux source ~/.tmux.conf"
+
+# CUDA Paths
+export PATH=/usr/local/cuda-12.8/bin${PATH:+:${PATH}}
+export LD_LIBRARY_PATH=/usr/local/cuda-12.8/lib64\ ${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+
+if [ $USE_CONDA -eq 1 ]; then
+    # >>> conda initialize >>>
+    # !! Contents within this block are managed by 'conda init' !!
+    __conda_setup="$('/home/gaspar/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+    if [ $? -eq 0 ]; then
+        eval "$__conda_setup"
+    else
+        if [ -f "/home/gaspar/miniconda3/etc/profile.d/conda.sh" ]; then
+            . "/home/gaspar/miniconda3/etc/profile.d/conda.sh"
+        else
+            export PATH="/home/gaspar/miniconda3/bin:$PATH"
+        fi
+    fi
+    unset __conda_setup
+    # <<< conda initialize <<<
+fi
